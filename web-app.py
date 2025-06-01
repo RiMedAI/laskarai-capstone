@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
 import joblib
-from sklearn.preprocessing import MinMaxScaler
-
 
 # List nama fitur yang digunakan untuk melatih model
 KOLOM_STROKE = ["Age", "Gender", "SES", "Hypertension", "Heart_Disease", "BMI", "Avg_Glucose", "Diabetes", "Smoking_Status"]
