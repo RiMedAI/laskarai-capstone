@@ -16,7 +16,7 @@ PENYAKIT = ["Stroke", "Jantung", "Diabetes"]
 # Daftar URL model
 model_urls = {
     "stroke": "https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/stroke_rf_bayes_model_smote.pkl",
-    "jantung": "https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/lr_jantung_smoteenn.pkl",
+    "jantung": "https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/lr_jantung_smote.pkl",
     "diabetes": "https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/Deteksi_diabetes_NN.pkl"
 }
 
