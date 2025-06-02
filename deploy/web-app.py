@@ -1,6 +1,9 @@
-import streamlit as st
-import pandas as pd
+import urllib.request as urlib
+from io import BytesIO
+
 import joblib
+import pandas as pd
+import streamlit as st
 
 # List nama fitur yang digunakan untuk melatih model
 KOLOM_STROKE = ["Age", "Gender", "SES", "Hypertension", "Heart_Disease", "BMI", "Avg_Glucose", "Diabetes", "Smoking_Status"]
@@ -9,6 +12,13 @@ KOLOM_DIABETES = ["Age", "HighChol", "BMI", "GenHlth", "DiffWalk", "HighBP"]
 
 # List nama penyakit yang diprediksi model
 PENYAKIT = ["Stroke", "Jantung", "Diabetes"]
+
+# Daftar URL model
+model_urls = {
+    "stroke": "https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/stroke_rf_bayes_model_smote.pkl",
+    "jantung": "https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/lr_jantung_smoteenn.pkl",
+    "diabetes": "https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/Deteksi_diabetes_NN.pkl"
+}
 
 
 # ==================================
@@ -183,10 +193,17 @@ if submit:
         # Kalau formulir sudah terisi semua, lanjut ke prediksi
         # loading ...
         with st.spinner("Sedang memproses prediksi..."):
-            # Load 3 model ML
-            model_stroke = joblib.load('https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/stroke_rf_bayes_model_smote.pkl')
-            model_jantung = joblib.load('https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/lr_jantung_smoteenn.pkl')
-            model_diabetes = joblib.load('https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/Deteksi_diabetes_NN.pkl')
+            # Load 3 model M
+            # Load semua model dalam satu dictionary
+            models = {
+                name: joblib.load(BytesIO(urlib.urlopen(url).read()))
+                for name, url in model_urls.items()
+            }
+            
+            # Akses model
+            model_stroke = models["stroke"]
+            model_jantung = models["jantung"]
+            model_diabetes = models["diabetes"]
 
             # Prediksi
             prediksi_stroke = model_stroke.predict(df_stroke)
