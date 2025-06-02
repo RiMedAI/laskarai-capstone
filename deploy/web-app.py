@@ -195,10 +195,10 @@ if submit:
         with st.spinner("Sedang memproses prediksi..."):
             # Load 3 model M
             # Load semua model dalam satu dictionary
-            models = {
-                name: joblib.load(BytesIO(urlib.urlopen(url).read()))
-                for name, url in model_urls.items()
-            }
+            models = {}
+            for key, url in model_urls.items():
+                with urlib.urlopen(url) as response:
+                    models[key] = joblib.load(BytesIO(response.read()))
             
             # Akses model
             model_stroke = models["stroke"]
