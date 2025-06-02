@@ -100,9 +100,10 @@ ses_encoded = encoded_values["ses"]
 
 
 try:
-    bmi = body_weight / ((body_height/100) ** 2)
+    bmi = body_weight / ((body_height / 100) ** 2)
 except (ZeroDivisionError, TypeError, ValueError):
     bmi = None
+    
 
 # Tambahkan fungsi binning usia (age)
 def bin_age(age):
@@ -139,7 +140,7 @@ def bin_age(age):
 age_bin = bin_age(age)
 
 # Simpan data input dari user ke dalam DataFrame
-df_stroke = pd.DataFrame([[age_bin, gender_encoded, ses_encoded, high_bp_encoded, heart_disease_encoded, bmi, avg_glucose, diabetes_encoded, smoking_status_encoded]], columns=KOLOM_STROKE)
+df_stroke = pd.DataFrame([[age, gender_encoded, ses_encoded, high_bp_encoded, heart_disease_encoded, bmi, avg_glucose, diabetes_encoded, smoking_status_encoded]], columns=KOLOM_STROKE)
 df_jantung = pd.DataFrame([[general_health_encoded, high_bp_encoded, age_bin, diabetes_encoded, high_chol_encoded, smoker_encoded, gender_encoded, any_healthcare_encoded]], columns=KOLOM_JANTUNG)
 df_diabetes = pd.DataFrame([[age, high_chol_encoded, bmi, general_health_encoded, difficulty_walk_encoded, high_bp_encoded]], columns=KOLOM_DIABETES)
 
@@ -183,9 +184,9 @@ if submit:
         # loading ...
         with st.spinner("Sedang memproses prediksi..."):
             # Load 3 model ML
-            model_stroke = joblib.load('export-model/stroke_rf_bayes_model_smote.pkl')
-            model_jantung = joblib.load('export-model/lr_jantung_smoteenn.pkl')
-            model_diabetes = joblib.load('export-model/Deteksi_diabetes_NN.pkl')
+            model_stroke = joblib.load('https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/stroke_rf_bayes_model_smote.pkl')
+            model_jantung = joblib.load('https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/lr_jantung_smoteenn.pkl')
+            model_diabetes = joblib.load('https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/Deteksi_diabetes_NN.pkl')
 
             # Prediksi
             prediksi_stroke = model_stroke.predict(df_stroke)
