@@ -100,7 +100,7 @@ ses_encoded = encoded_values["ses"]
 
 
 try:
-    bmi = body_weight / (body_height ** 2)
+    bmi = body_weight / ((body_height/100) ** 2)
 except (ZeroDivisionError, TypeError, ValueError):
     bmi = None
 
