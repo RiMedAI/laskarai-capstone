@@ -104,9 +104,43 @@ try:
 except (ZeroDivisionError, TypeError, ValueError):
     bmi = None
 
+# Tambahkan fungsi binning usia (age)
+def bin_age(age):
+    if 18 <= age <= 24:
+        return 1
+    elif 25 <= age <= 29:
+        return 2
+    elif 30 <= age <= 34:
+        return 3
+    elif 35 <= age <= 39:
+        return 4
+    elif 40 <= age <= 44:
+        return 5
+    elif 45 <= age <= 49:
+        return 6
+    elif 50 <= age <= 54:
+        return 7
+    elif 55 <= age <= 59:
+        return 8
+    elif 60 <= age <= 64:
+        return 9
+    elif 65 <= age <= 69:
+        return 10
+    elif 70 <= age <= 74:
+        return 11
+    elif 75 <= age <= 79:
+        return 12
+    elif 80 <= age <= 84:
+        return 13
+    else:
+        return 0  # default jika usia di luar rentang
+        
+# Hitung bin usia
+age_bin = bin_age(age)
+
 # Simpan data input dari user ke dalam DataFrame
-df_stroke = pd.DataFrame([[age, gender_encoded, ses_encoded, high_bp_encoded, heart_disease_encoded, bmi, avg_glucose, diabetes_encoded, smoking_status_encoded]], columns=KOLOM_STROKE)
-df_jantung = pd.DataFrame([[general_health_encoded, high_bp_encoded, age, diabetes_encoded, high_chol_encoded, smoker_encoded, gender_encoded, any_healthcare_encoded]], columns=KOLOM_JANTUNG)
+df_stroke = pd.DataFrame([[age_bin, gender_encoded, ses_encoded, high_bp_encoded, heart_disease_encoded, bmi, avg_glucose, diabetes_encoded, smoking_status_encoded]], columns=KOLOM_STROKE)
+df_jantung = pd.DataFrame([[general_health_encoded, high_bp_encoded, age_bin, diabetes_encoded, high_chol_encoded, smoker_encoded, gender_encoded, any_healthcare_encoded]], columns=KOLOM_JANTUNG)
 df_diabetes = pd.DataFrame([[age, high_chol_encoded, bmi, general_health_encoded, difficulty_walk_encoded, high_bp_encoded]], columns=KOLOM_DIABETES)
 
 
