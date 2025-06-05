@@ -205,7 +205,7 @@ if submit:
 
             # Prediksi
             prediksi_stroke = model_stroke.predict(df_stroke)
-            persentase_risiko_stroke = model_stroke.predict(df_stroke)[0][1] * 100
+            persentase_risiko_stroke = model_stroke.predict(df_stroke)[0][0] * 100
             prediksi_jantung = model_jantung.predict(df_jantung)
             persentase_risiko_jantung = model_jantung.predict_proba(df_jantung)[0][1] * 100
             prediksi_diabetes = model_diabetes.predict(df_diabetes)
