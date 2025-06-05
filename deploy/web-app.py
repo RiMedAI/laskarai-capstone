@@ -1,6 +1,5 @@
 import urllib.request as urlib
 from io import BytesIO
-from sklearn.preprocessing import MinMaxScaler
 
 import joblib
 import pandas as pd
@@ -15,7 +14,7 @@ KOLOM_DIABETES = ["Age", "HighChol", "BMI", "GenHlth", "DiffWalk", "HighBP"]
 PENYAKIT = ["Stroke", "Jantung", "Diabetes"]
 
 # Url model penyakit
-URL_MODEL_STROKE = 'https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/stroke_tf_model_smote.pkl'
+URL_MODEL_STROKE = 'https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/stroke_rf_bayes_model_smote.pkl'
 URL_MODEL_JANTUNG = 'https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/lr_jantung_smoteenn.pkl'
 URL_MODEL_DIABETES = 'https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/Deteksi_diabetes_NN.pkl'
 
@@ -205,7 +204,7 @@ if submit:
 
             # Prediksi
             prediksi_stroke = model_stroke.predict(df_stroke)
-            persentase_risiko_stroke = model_stroke.predict(df_stroke)[0][0] * 100
+            persentase_risiko_stroke = model_stroke.predict_proba(df_stroke)[0][1] * 100
             prediksi_jantung = model_jantung.predict(df_jantung)
             persentase_risiko_jantung = model_jantung.predict_proba(df_jantung)[0][1] * 100
             prediksi_diabetes = model_diabetes.predict(df_diabetes)
