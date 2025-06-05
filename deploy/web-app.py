@@ -14,7 +14,7 @@ KOLOM_DIABETES = ["Age", "HighChol", "BMI", "GenHlth", "DiffWalk", "HighBP"]
 PENYAKIT = ["Stroke", "Jantung", "Diabetes"]
 
 # Url model penyakit
-URL_MODEL_STROKE = 'https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/stroke_svm_model_smote.pkl'
+URL_MODEL_STROKE = 'https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/stroke_tf_model_smote.pkl'
 URL_MODEL_JANTUNG = 'https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/lr_jantung_smoteenn.pkl'
 URL_MODEL_DIABETES = 'https://raw.githubusercontent.com/RiMedAI/laskarai-capstone/refs/heads/main/export-model/Deteksi_diabetes_NN.pkl'
 
