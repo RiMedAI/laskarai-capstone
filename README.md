@@ -2,7 +2,7 @@
 
 ## 📌 Deskripsi
 
-RiMedAI adalah aplikasi web berbasis machine learning yang memprediksi risiko penyakit berdasarkan data pengguna. Model dilatih menggunakan data kesehatan pengguna dan diintegrasikan ke dalam antarmuka web menggunakan Streamlit, sehingga pengguna dapat langsung melakukan prediksi secara interaktif.
+RiMedAI adalah aplikasi web berbasis machine learning yang memprediksi risiko penyakit berdasarkan data pengguna. Model dilatih menggunakan data kesehatan pasien dan diintegrasikan ke dalam antarmuka web menggunakan Streamlit, sehingga pengguna dapat langsung melakukan prediksi risiko penyakit secara interaktif.
 
 
 ## 📁 Struktur Repositori
